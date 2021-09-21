@@ -1,18 +1,9 @@
 package pp.invoices.invoicesapp.entity;
 
 public class CustomerDto {
-    private String id;
     private String name;
     private String description;
     private String email;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId( String aId ) {
-        id = aId;
-    }
 
     public String getName() {
         return name;
