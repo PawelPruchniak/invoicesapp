@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pp.invoices.invoicesapp.entity.CustomerDto;
 import pp.invoices.invoicesapp.service.CustomerService;
 
-import static pp.invoices.invoicesapp.enums.CustomerStrings.CUSTOMER;
+import static pp.invoices.invoicesapp.enums.CustomerStrings.CUSTOMER_ATTRIBUTE;
 import static pp.invoices.invoicesapp.enums.CustomerStrings.CUSTOMER_FORM;
 import static pp.invoices.invoicesapp.enums.CustomerStrings.CUSTOMER_POST_RESULT;
-import static pp.invoices.invoicesapp.enums.CustomerStrings.DESCRIPTION;
-import static pp.invoices.invoicesapp.enums.CustomerStrings.EMAIL;
-import static pp.invoices.invoicesapp.enums.CustomerStrings.ID;
-import static pp.invoices.invoicesapp.enums.CustomerStrings.NAME;
+import static pp.invoices.invoicesapp.enums.CustomerStrings.DESCRIPTION_ATTRIBUTE;
+import static pp.invoices.invoicesapp.enums.CustomerStrings.EMAIL_ATTRIBUTE;
+import static pp.invoices.invoicesapp.enums.CustomerStrings.ID_ATTRIBUTE;
+import static pp.invoices.invoicesapp.enums.CustomerStrings.NAME_ATTRIBUTE;
 
 @Controller
 public class CustomerController {
@@ -27,14 +27,14 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping("/customer")
-    public String createCustomer( @ModelAttribute(value = CUSTOMER) CustomerDto aCustomerDto,
+    public String createCustomer( @ModelAttribute(value = CUSTOMER_ATTRIBUTE) CustomerDto aCustomerDto,
                                   Model aModel ) throws StripeException {
         Customer customer = customerService.create( aCustomerDto );
 
-        aModel.addAttribute( ID, customer.getId() );
-        aModel.addAttribute( NAME, customer.getName() );
-        aModel.addAttribute( DESCRIPTION, customer.getDescription() );
-        aModel.addAttribute( EMAIL, customer.getEmail() );
+        aModel.addAttribute( ID_ATTRIBUTE, customer.getId() );
+        aModel.addAttribute( NAME_ATTRIBUTE, customer.getName() );
+        aModel.addAttribute( DESCRIPTION_ATTRIBUTE, customer.getDescription() );
+        aModel.addAttribute( EMAIL_ATTRIBUTE, customer.getEmail() );
 
         return CUSTOMER_POST_RESULT;
     }
@@ -43,7 +43,7 @@ public class CustomerController {
     public String get( Model aModel ) {
         CustomerDto customerDto = new CustomerDto();
 
-        aModel.addAttribute( CUSTOMER, customerDto );
+        aModel.addAttribute( CUSTOMER_ATTRIBUTE, customerDto );
 
         return CUSTOMER_FORM;
     }
