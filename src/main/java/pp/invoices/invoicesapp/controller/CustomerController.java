@@ -12,40 +12,45 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pp.invoices.invoicesapp.entity.CustomerDto;
 import pp.invoices.invoicesapp.service.CustomerService;
 
+import static pp.invoices.invoicesapp.enums.CustomerStrings.CUSTOMER;
+import static pp.invoices.invoicesapp.enums.CustomerStrings.CUSTOMER_FORM;
+import static pp.invoices.invoicesapp.enums.CustomerStrings.CUSTOMER_POST_RESULT;
+import static pp.invoices.invoicesapp.enums.CustomerStrings.DESCRIPTION;
+import static pp.invoices.invoicesapp.enums.CustomerStrings.EMAIL;
+import static pp.invoices.invoicesapp.enums.CustomerStrings.ID;
+import static pp.invoices.invoicesapp.enums.CustomerStrings.NAME;
+
 @Controller
 public class CustomerController {
-
-    public static final String CUSTOMER_POST_RESULT = "customer_post_result";
-    public static final String CUSTOMER_FORM = "customer_form";
 
     @Autowired
     private CustomerService customerService;
 
     @PostMapping("/customer")
-    public String createCustomer( @ModelAttribute(value = "customer") CustomerDto aCustomerDto,
+    public String createCustomer( @ModelAttribute(value = CUSTOMER) CustomerDto aCustomerDto,
                                   Model aModel ) throws StripeException {
         Customer customer = customerService.create( aCustomerDto );
 
-        aModel.addAttribute( "id", customer.getId() );
-        aModel.addAttribute( "name", customer.getName() );
-        aModel.addAttribute( "description", customer.getDescription() );
-        aModel.addAttribute( "email", customer.getEmail() );
+        aModel.addAttribute( ID, customer.getId() );
+        aModel.addAttribute( NAME, customer.getName() );
+        aModel.addAttribute( DESCRIPTION, customer.getDescription() );
+        aModel.addAttribute( EMAIL, customer.getEmail() );
 
         return CUSTOMER_POST_RESULT;
     }
 
     @GetMapping("/customer")
     public String get( Model aModel ) {
-
         CustomerDto customerDto = new CustomerDto();
-        aModel.addAttribute( "customer", customerDto );
+
+        aModel.addAttribute( CUSTOMER, customerDto );
 
         return CUSTOMER_FORM;
     }
 
     @ExceptionHandler(StripeException.class)
-    public String handleError( Model model, StripeException ex ) {
-        model.addAttribute( "error", ex.getMessage() );
+    public String handleError( Model aModel, StripeException aStripeException ) {
+        aModel.addAttribute( "error", aStripeException.getMessage() );
 
         return CUSTOMER_POST_RESULT;
     }
