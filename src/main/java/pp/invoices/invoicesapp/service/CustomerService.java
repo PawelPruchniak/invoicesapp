@@ -33,6 +33,7 @@ public class CustomerService {
 
     public Customer create( CustomerDto aCustomerDto ) throws StripeException {
         Map<String, Object> customerParams = new HashMap<>();
+
         customerParams.put( NAME_ATTRIBUTE, aCustomerDto.getName() );
         customerParams.put( EMAIL_ATTRIBUTE, aCustomerDto.getEmail() );
         customerParams.put( DESCRIPTION_ATTRIBUTE, aCustomerDto.getDescription() );
