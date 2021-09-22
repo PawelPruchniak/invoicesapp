@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
+<head>
+    <title>Result</title>
+</head>
+<body>
+<h3 th:if='${error}' th:text='${error}' style='color: red;'></h3>
+    <div th:unless='${error}'>
+        <h3 style='color: green;'>Customer has been correctly added!</h3>
+        <div>Name: <span th:text='${name}'></span></div>
+        <div>Description.: <span th:text='${description}'></span></div>
+        <div>Email.: <span th:text='${email}'></span></div>
+    </div>
+</body>
+</html>

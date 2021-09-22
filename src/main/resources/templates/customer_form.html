@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
+<head>
+    <title>Customer Form</title>
+</head>
+<body>
+    <form method="POST" th:action="@{/customer}" th:object="${customer}">
+        <h2> Customer Form </h2>
+        <div>
+            Name: <input type="text" th:field="*{name}"/>
+        </div>
+        <div>
+            Description:<input type="text" th:field="*{description}"/>
+        </div>
+        <div>
+            Email:<input type="email" th:field="*{email}"/>
+        </div>
+        <div>
+            <button type="submit" name="submit" value="value" class="link-button">Submit</button>
+        </div>
+    </form>
+</body>
+</html>
