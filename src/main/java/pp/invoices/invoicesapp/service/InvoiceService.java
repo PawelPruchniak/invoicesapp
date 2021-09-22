@@ -5,6 +5,7 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.Invoice;
 import com.stripe.model.InvoiceCollection;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import pp.invoices.invoicesapp.entity.InvoiceDto;
 
 import javax.annotation.PostConstruct;
@@ -20,6 +21,7 @@ import static pp.invoices.invoicesapp.enums.InvoiceStrings.CUSTOMER_ID_ATTRIBUTE
 import static pp.invoices.invoicesapp.enums.InvoiceStrings.DESCRIPTION_ATTRIBUTE;
 import static pp.invoices.invoicesapp.enums.InvoiceStrings.LIMIT_ATTRIBUTE;
 
+@Service
 public class InvoiceService {
 
     @Value("${STRIPE_SECRET_KEY}")
