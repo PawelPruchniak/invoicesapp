@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
+<head>
+    <title>Result</title>
+</head>
+    <body>
+    <h3 th:if='${error}' th:text='${error}' style='color: red;'></h3>
+    <div th:unless='${error}'>
+        <h3 style='color: green;'>Invoice has been correctly added!</h3>
+        <div>Invoice Id: <span th:text='${id}'></span></div>
+        <div>Customer Id: <span th:text='${customer}'></span></div>
+        <div>Account country.: <span th:text='${account_country}'></span></div>
+        <div>Account name.: <span th:text='${account_name}'></span></div>
+        <div>Amount due.: <span th:text='${amount_due}'></span></div>
+        <div>Amount paid.: <span th:text='${amount_paid}'></span></div>
+        <div>Amount remaining.: <span th:text='${amount_remaining}'></span></div>
+        <div>Description.: <span th:text='${description}'></span></div>
+    </div>
+    </body>
+</html>

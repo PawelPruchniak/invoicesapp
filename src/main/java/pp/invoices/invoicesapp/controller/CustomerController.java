@@ -32,7 +32,7 @@ public class CustomerController {
     /**
      * @param aCustomerDto - creating Customer
      * @param aModel       - Model for created Customer
-     * @return - #customer_form.html with POST request results
+     * @return - #customer_post_form.html with POST request results
      * @throws StripeException - Stripe Exception
      */
     @PostMapping("/customer")

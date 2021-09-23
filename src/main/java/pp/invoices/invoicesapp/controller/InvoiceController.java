@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pp.invoices.invoicesapp.entity.InvoiceDto;
 import pp.invoices.invoicesapp.service.InvoiceService;
 
+import static pp.invoices.invoicesapp.enums.Country.PL;
 import static pp.invoices.invoicesapp.enums.InvoiceStrings.ACCOUNT_COUNTRY_ATTRIBUTE;
 import static pp.invoices.invoicesapp.enums.InvoiceStrings.ACCOUNT_NAME_ATTRIBUTE;
 import static pp.invoices.invoicesapp.enums.InvoiceStrings.AMOUNT_DUE_ATTRIBUTE;
@@ -39,10 +40,10 @@ public class InvoiceController {
      * @return - #invoice_form.html with POST request results
      * @throws StripeException - Stripe Exception
      */
-    @PostMapping("/invoice")
+    @PostMapping("/invoices")
     public String createCustomer( @ModelAttribute(value = INVOICE_ATTRIBUTE) InvoiceDto aInvoiceDto,
                                   Model aModel ) throws StripeException {
-        Invoice invoice = invoiceService.create( aInvoiceDto );
+        Invoice invoice = invoiceService.create( setDefaultInvoice( aInvoiceDto ) );
 
         aModel.addAttribute( ID_ATTRIBUTE, invoice.getId() );
         aModel.addAttribute( CUSTOMER_ID_ATTRIBUTE, invoice.getCustomer() );
@@ -85,5 +86,12 @@ public class InvoiceController {
         aModel.addAttribute( "error", aStripeException.getMessage() );
 
         return INVOICE_POST_RESULT;
+    }
+
+    private InvoiceDto setDefaultInvoice( InvoiceDto aInvoiceDto ) {
+        aInvoiceDto.setAccount_country( PL );
+        aInvoiceDto.setAmount_remaining( aInvoiceDto.getAmount_due() );
+        aInvoiceDto.setAmount_paid( 0 );
+        return aInvoiceDto;
     }
 }

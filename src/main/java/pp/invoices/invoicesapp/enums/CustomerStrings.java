@@ -12,7 +12,7 @@ public class CustomerStrings {
     public static final String LIMIT_ATTRIBUTE = "limit";
 
     public static final String CUSTOMER_POST_RESULT = "customer_post_result";
-    public static final String CUSTOMER_FORM = "customer_form";
+    public static final String CUSTOMER_FORM = "customer_post_form";
     public static final String CUSTOMERS_LIST = "customer_list";
 
 }

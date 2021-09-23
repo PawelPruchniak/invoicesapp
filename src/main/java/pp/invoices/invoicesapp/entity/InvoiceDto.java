@@ -1,7 +1,7 @@
 package pp.invoices.invoicesapp.entity;
 
 public class InvoiceDto {
-    private String customerId;
+    private String customer;
     private String account_name;
     private String account_country;
     private Integer amount_due;
@@ -9,12 +9,12 @@ public class InvoiceDto {
     private Integer amount_remaining;
     private String description;
 
-    public String getCustomerId() {
-        return customerId;
+    public String getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId( String aCustomerId ) {
-        customerId = aCustomerId;
+    public void setCustomer( String aCustomerId ) {
+        customer = aCustomerId;
     }
 
     public String getAccount_name() {
