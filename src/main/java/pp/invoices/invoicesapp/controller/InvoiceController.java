@@ -41,7 +41,7 @@ public class InvoiceController {
      * @throws StripeException - Stripe Exception
      */
     @PostMapping("/invoice")
-    public String createCustomer( @ModelAttribute(value = INVOICE_ATTRIBUTE) InvoiceDto aInvoiceDto,
+    public String createInvoice( @ModelAttribute(value = INVOICE_ATTRIBUTE) InvoiceDto aInvoiceDto,
                                   Model aModel ) throws StripeException {
         Invoice invoice = invoiceService.create( setDefaultValuesForInvoice( aInvoiceDto ) );
 
@@ -62,7 +62,7 @@ public class InvoiceController {
      * @return Form to fill and create Invoice
      */
     @GetMapping("/invoice")
-    public String getCustomerForm( Model aModel ) {
+    public String getInvoiceForm( Model aModel ) {
         InvoiceDto invoiceDto = new InvoiceDto();
 
         aModel.addAttribute( INVOICE_ATTRIBUTE, invoiceDto );
@@ -74,7 +74,7 @@ public class InvoiceController {
      * @return list of All Invoices
      */
     @GetMapping(value = "/invoices", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getAllCustomers( Model aModel ) throws StripeException {
+    public String getAllInvoices( Model aModel ) throws StripeException {
 
         aModel.addAttribute( INVOICES_ATTRIBUTE, invoiceService.listAll() );
 

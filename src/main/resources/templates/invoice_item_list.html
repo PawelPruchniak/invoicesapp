@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
+<table cellspacing="20px" border="1">
+    <thead>
+    <tr>
+        <th> ID</th>
+        <th> CustomerId</th>
+        <th> Amount</th>
+        <th> Currency</th>
+        <th> Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="invoiceItem : ${invoiceItems.data}">
+        <td><span th:text="${invoiceItem.id}"> Id </span></td>
+        <td><span th:text="${invoiceItem.customer}"> CustomerId </span></td>
+        <td><span th:text="${invoiceItem.amount}"> Amount </span></td>
+        <td><span th:text="${invoiceItem.currency}"> Currency </span></td>
+        <td><span th:text="${invoiceItem.description}"> Description </span></td>
+    </tr>
+    </tbody>
+</table>
+</html>
