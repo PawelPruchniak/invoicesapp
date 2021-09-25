@@ -4,7 +4,7 @@
     <title>Invoice Form</title>
 </head>
 <body>
-    <form method="POST" th:action="@{/invoices}" th:object="${invoice}">
+    <form method="POST" th:action="@{/invoice}" th:object="${invoice}">
         <h2> Invoice Form </h2>
         <div>
             Customer Id: <input type="text" th:field="*{customer}"/>
