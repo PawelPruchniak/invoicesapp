@@ -4,12 +4,12 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.InvoiceItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import pp.invoices.invoicesapp.entity.InvoiceDto;
 import pp.invoices.invoicesapp.entity.InvoiceItemDto;
 import pp.invoices.invoicesapp.service.InvoiceItemService;
 
@@ -24,6 +24,7 @@ import static pp.invoices.invoicesapp.enums.InvoiceItemStrings.INVOICE_ITEM_ATTR
 import static pp.invoices.invoicesapp.enums.InvoiceItemStrings.INVOICE_ITEM_FORM;
 import static pp.invoices.invoicesapp.enums.InvoiceItemStrings.INVOICE_ITEM_POST_RESULT;
 
+@Controller
 public class InvoiceItemController {
 
     @Autowired
@@ -37,7 +38,7 @@ public class InvoiceItemController {
      */
     @PostMapping("/invoiceItem")
     public String createInvoiceItem( @ModelAttribute(value = INVOICE_ITEM_ATTRIBUTE) InvoiceItemDto aInvoiceItemDto,
-                                  Model aModel ) throws StripeException {
+                                     Model aModel ) throws StripeException {
         InvoiceItem invoiceItem = invoiceItemService.create( aInvoiceItemDto );
 
         aModel.addAttribute( ID_ATTRIBUTE, invoiceItem.getId() );
@@ -55,9 +56,9 @@ public class InvoiceItemController {
      */
     @GetMapping("/invoiceItem")
     public String getInvoiceItemForm( Model aModel ) {
-        InvoiceDto invoiceDto = new InvoiceDto();
+        InvoiceItemDto invoiceItemDto = new InvoiceItemDto();
 
-        aModel.addAttribute( INVOICE_ITEM_ATTRIBUTE, invoiceDto );
+        aModel.addAttribute( INVOICE_ITEM_ATTRIBUTE, invoiceItemDto );
 
         return INVOICE_ITEM_FORM;
     }
@@ -65,7 +66,7 @@ public class InvoiceItemController {
     /**
      * @return list of All InvoiceItems
      */
-    @GetMapping(value = "/invoices", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/invoiceItems", produces = MediaType.APPLICATION_JSON_VALUE)
     public String getAllInvoiceItems( Model aModel ) throws StripeException {
 
         aModel.addAttribute( INVOICE_ITEMS_ATTRIBUTE, invoiceItemService.listAll() );

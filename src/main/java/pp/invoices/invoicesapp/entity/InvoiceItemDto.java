@@ -1,11 +1,9 @@
 package pp.invoices.invoicesapp.entity;
 
-import pp.invoices.invoicesapp.enums.Currency;
-
 public class InvoiceItemDto {
     private String customer;
     private Integer amount;
-    private Currency currency;
+    private String currency;
     private String description;
 
     public String getCustomer() {
@@ -24,11 +22,11 @@ public class InvoiceItemDto {
         amount = aAmount;
     }
 
-    public Currency getCurrency() {
+    public String getCurrency() {
         return currency;
     }
 
-    public void setCurrency( Currency aCurrency ) {
+    public void setCurrency( String aCurrency ) {
         currency = aCurrency;
     }
 
