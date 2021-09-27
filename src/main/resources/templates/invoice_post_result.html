@@ -15,5 +15,10 @@
         <div>Amount remaining: <span th:text='${amountRemaining}'></span></div>
         <div>Description: <span th:text='${description}'></span></div>
     </div>
+    <div>
+        <form action="http://localhost:8080/invoices">
+            <input type="submit" value="Go to Invoice list" />
+        </form>
+    </div>
     </body>
 </html>
