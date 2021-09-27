@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pp.invoices.invoicesapp.entity.InvoiceDto;
 import pp.invoices.invoicesapp.service.InvoiceService;
 
-import static pp.invoices.invoicesapp.enums.Country.PL;
 import static pp.invoices.invoicesapp.enums.InvoiceStrings.ACCOUNT_COUNTRY_ATTRIBUTE;
-import static pp.invoices.invoicesapp.enums.InvoiceStrings.ACCOUNT_NAME_ATTRIBUTE;
 import static pp.invoices.invoicesapp.enums.InvoiceStrings.AMOUNT_DUE_ATTRIBUTE;
 import static pp.invoices.invoicesapp.enums.InvoiceStrings.AMOUNT_PAID_ATTRIBUTE;
 import static pp.invoices.invoicesapp.enums.InvoiceStrings.AMOUNT_REMAINING_ATTRIBUTE;
@@ -42,13 +40,12 @@ public class InvoiceController {
      */
     @PostMapping("/invoice")
     public String createInvoice( @ModelAttribute(value = INVOICE_ATTRIBUTE) InvoiceDto aInvoiceDto,
-                                  Model aModel ) throws StripeException {
-        Invoice invoice = invoiceService.create( setDefaultValuesForInvoice( aInvoiceDto ) );
+                                 Model aModel ) throws StripeException {
+        Invoice invoice = invoiceService.create( aInvoiceDto );
 
         aModel.addAttribute( ID_ATTRIBUTE, invoice.getId() );
         aModel.addAttribute( CUSTOMER_ID_ATTRIBUTE, invoice.getCustomer() );
         aModel.addAttribute( ACCOUNT_COUNTRY_ATTRIBUTE, invoice.getAccountCountry() );
-        aModel.addAttribute( ACCOUNT_NAME_ATTRIBUTE, invoice.getAccountName() );
         aModel.addAttribute( AMOUNT_DUE_ATTRIBUTE, invoice.getAmountDue() );
         aModel.addAttribute( AMOUNT_PAID_ATTRIBUTE, invoice.getAmountPaid() );
         aModel.addAttribute( AMOUNT_REMAINING_ATTRIBUTE, invoice.getAmountRemaining() );
@@ -88,10 +85,4 @@ public class InvoiceController {
         return INVOICE_POST_RESULT;
     }
 
-    private InvoiceDto setDefaultValuesForInvoice( InvoiceDto aInvoiceDto ) {
-        aInvoiceDto.setAccount_country( PL );
-        aInvoiceDto.setAmount_remaining( aInvoiceDto.getAmount_due() );
-        aInvoiceDto.setAmount_paid( 0 );
-        return aInvoiceDto;
-    }
 }

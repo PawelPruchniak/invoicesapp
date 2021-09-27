@@ -6,7 +6,6 @@
         <th> ID</th>
         <th> Customer ID</th>
         <th> Account country</th>
-        <th> Account name</th>
         <th> Amount due</th>
         <th> Amount paid</th>
         <th> Amount remaining</th>
@@ -17,12 +16,11 @@
     <tr th:each="invoice : ${invoices.data}">
         <td><span th:text="${invoice.id}"> Id </span></td>
         <td><span th:text="${invoice.customer}"> Customer </span></td>
-        <td><span th:text="${invoice.account_country}"> Account country </span></td>
-        <td><span th:text="${invoice.account_name}"> Account name </span></td>
-        <td><span th:text="${invoice.amount_due}"> Amount due </span></td>
-        <td><span th:text="${invoice.amount_paid}"> Amount paid </span></td>
-        <td><span th:text="${invoice.amount_remaining}"> Amount remaining </span></td>
-        <td><span th:text="${invoice.email}"> Description </span></td>
+        <td><span th:text="${invoice.accountCountry}"> Account country </span></td>
+        <td><span th:text="${invoice.amountDue}"> Amount due </span></td>
+        <td><span th:text="${invoice.amountPaid}"> Amount paid </span></td>
+        <td><span th:text="${invoice.amountRemaining}"> Amount remaining </span></td>
+        <td><span th:text="${invoice.description}"> Description </span></td>
     </tr>
     </tbody>
 </table>

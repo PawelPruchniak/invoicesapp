@@ -10,17 +10,16 @@
             Customer Id: <input type="text" th:field="*{customer}"/>
         </div>
         <div>
-            Account name:<input type="text" th:field="*{account_name}"/>
-        </div>
-        <div>
-            Amount due:<input type="text" th:field="*{amount_due}"/>
-        </div>
-        <div>
             Description :<input type="text" th:field="*{description}"/>
         </div>
         <div>
             <button type="submit" name="submit" value="value" class="link-button">Submit</button>
         </div>
     </form>
+    <div>
+        <form action="localhost:8080/invoices">
+            <input type="submit" value="Go to invoices list" />
+        </form>
+    </div>
 </body>
 </html>
