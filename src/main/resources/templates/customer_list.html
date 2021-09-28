@@ -1,21 +1,29 @@
 <!DOCTYPE html>
-<html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
-<table cellspacing="20px" border="1">
-    <thead>
-    <tr>
-        <th> ID </th>
-        <th> Name </th>
-        <th> Description </th>
-        <th> Email </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="customer : ${customers.data}">
-        <td><span th:text="${customer.id}"> Id </span></td>
-        <td><span th:text="${customer.name}"> Name </span></td>
-        <td><span th:text="${customer.description}"> Description </span></td>
-        <td><span th:text="${customer.email}"> Email </span></td>
-    </tr>
-    </tbody>
-</table>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link th:href="@{/styles/css/table.css}" rel="stylesheet" />
+</head>
+    <body>
+        <h2>Customers List</h2>
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th> ID </th>
+                        <th> Name </th>
+                        <th> Description </th>
+                        <th> Email </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="customer : ${customers.data}">
+                        <td><span th:text="${customer.id}"> Id </span></td>
+                        <td><span th:text="${customer.name}"> Name </span></td>
+                        <td><span th:text="${customer.description}"> Description </span></td>
+                        <td><span th:text="${customer.email}"> Email </span></td>
+                    </tr>
+                <tbody>
+            </table>
+        </div>
+    </body>
 </html>
