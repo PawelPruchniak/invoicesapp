@@ -1,31 +1,34 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Invoice List</title>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link th:href="@{/styles/css/table.css}" rel="stylesheet" />
     </head>
     <body>
-        <div th:if="${invoices.getData().size() > 0}">
-            <table>
-                <tr>
-                    <th> ID</th>
-                    <th> Customer ID</th>
-                    <th> Account country</th>
-                    <th> Amount due</th>
-                    <th> Amount paid</th>
-                    <th> Amount remaining</th>
-                    <th> Description</th>
-                </tr>
-                <tr th:each="invoice : ${invoices.data}">
-                    <td th:text="${invoice.id}"> Id</td>
-                    <td th:text="${invoice.customer}"> Customer</td>
-                    <td th:text="${invoice.accountCountry}"> Account country</td>
-                    <td th:text="${invoice.amountDue}"> Amount due</td>
-                    <td th:text="${invoice.amountPaid}"> Amount paid</td>
-                    <td th:text="${invoice.amountRemaining}"> Amount remaining</td>
-                    <td th:text="${invoice.description}"> Description</td>
-                </tr>
+        <h2>Invoice List</h2>
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th> ID</th>
+                        <th> Customer ID</th>
+                        <th> Account country</th>
+                        <th> Amount due</th>
+                        <th> Amount paid</th>
+                        <th> Amount remaining</th>
+                        <th> Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="invoice : ${invoices.data}">
+                        <td><span th:text="${invoice.id}"> Id </span></td>
+                        <td><span th:text="${invoice.customer}"> Customer </span></td>
+                        <td><span th:text="${invoice.accountCountry}"> Account country </span></td>
+                        <td><span th:text="${invoice.amountDue}"> Amount due </span></td>
+                        <td><span th:text="${invoice.amountPaid}"> Amount paid </span></td>
+                        <td><span th:text="${invoice.amountRemaining}"> Amount remaining </span></td>
+                        <td><span th:text="${invoice.description}"> Description </span></td>
+                    </tr>
+                <tbody>
             </table>
         </div>
     </body>
