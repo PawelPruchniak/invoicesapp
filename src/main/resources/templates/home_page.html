@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<div class="grid-container">
+    <div class="grid-item">
+        <div>
+            <form action="http://localhost:8080/customer">
+                <input type="submit" value="Create new customer via form" />
+            </form>
+        </div>
+        <div>
+            <form action="http://localhost:8080/customers">
+                <input type="submit" value="View all created customers" />
+            </form>
+        </div>
+    </div>
+
+    <div class="grid-item">
+        <div>
+            <form action="http://localhost:8080/invoice">
+                <input type="submit" value="Create new invoice via form" />
+            </form>
+        </div>
+        <div>
+            <form action="http://localhost:8080/invoices">
+                <input type="submit" value="View all created invoices" />
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <p>
+                <a href="/invoice" th:href="@{/invoice}" class="btn btn-large btn-success">Create new invoice via form</a>
+            </p>
+        </div>
+        <div>
+            <form action="http://localhost:8080/invoiceItems">
+                <input type="submit" value="View all created invoice items" />
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
