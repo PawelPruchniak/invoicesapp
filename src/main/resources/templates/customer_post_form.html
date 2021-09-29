@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
-<head>
-    <title>Customer Form</title>
-</head>
-<body>
-    <form method="POST" th:action="@{/customer}" th:object="${customer}">
-        <h2> Customer Form </h2>
-        <div>
-            Name: <input type="text" th:field="*{name}"/>
+    <head>
+        <title>Customer Form</title>
+        <link th:href="@{/styles/css/form.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <h2>Customer Form</h2>
+        <div class="container">
+            <form method="POST" th:action="@{/customer}" th:object="${customer}">
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name..">
+
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="Your email..">
+
+                <label for="description">Description</label>
+                <input type="text" id="description" name="description" placeholder="Description..">
+
+                <input type="submit" value="Submit">
+            </form>
         </div>
-        <div>
-            Description:<input type="text" th:field="*{description}"/>
-        </div>
-        <div>
-            Email:<input type="email" th:field="*{email}"/>
-        </div>
-        <div>
-            <button type="submit" name="submit" value="value" class="link-button">Submit</button>
-        </div>
-    </form>
-</body>
+    </body>
 </html>
