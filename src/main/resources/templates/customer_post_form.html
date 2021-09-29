@@ -10,15 +10,15 @@
             <form method="POST" th:action="@{/customer}" th:object="${customer}">
 
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your name..">
+                <input type="text" id="name" name="name" th:field="*{name}" placeholder="Your name.." >
 
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email" placeholder="Your email..">
+                <input type="text" id="email" name="email" th:field="*{email}" placeholder="Your email..">
 
                 <label for="description">Description</label>
-                <input type="text" id="description" name="description" placeholder="Description..">
+                <input type="text" id="description" name="description" th:field="*{description}" placeholder="Description..">
 
-                <input type="submit" value="Submit">
+                <input type="submit" value="CREATE">
             </form>
         </div>
     </body>

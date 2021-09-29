@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
-<head>
-    <title>Invoice Form</title>
-</head>
-<body>
-    <form method="POST" th:action="@{/invoice}" th:object="${invoice}">
-        <h2> Invoice Form </h2>
-        <div>
-            Customer Id: <input type="text" th:field="*{customer}"/>
+    <head>
+        <title>Invoice Form</title>
+        <link th:href="@{/styles/css/form.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <h2>Invoice Form</h2>
+        <div class="container">
+            <form method="POST" th:action="@{/invoice}" th:object="${invoice}">
+
+                <label for="customerId">Customer Id</label>
+                <input type="text" id="customerId" name="customerId" th:field="*{customer}" placeholder="Enter customer id..">
+
+                <label for="description">Description</label>
+                <input type="text" id="description" name="description" th:field="*{description}" placeholder="Description for invoice..">
+
+                <input type="submit" value="CREATE">
+            </form>
         </div>
-        <div>
-            Description :<input type="text" th:field="*{description}"/>
-        </div>
-        <div>
-            <button type="submit" name="submit" value="value" class="link-button">Submit</button>
-        </div>
-    </form>
-</body>
+    </body>
 </html>

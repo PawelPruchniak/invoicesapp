@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
-<head>
-    <title>Invoice Item Form</title>
-</head>
-<body>
-<form method="POST" th:action="@{/invoiceItem}" th:object="${invoiceItem}">
-    <h2> Invoice Item Form </h2>
-    <div>
-        CustomerId: <input type="text" th:field="*{customer}"/>
-    </div>
-    <div>
-        Amount: <input type="text" th:field="*{amount}"/>
-    </div>
-    <div>
-        Currency: <input type="text" th:field="*{currency}"/>
-    </div>
-    <div>
-        Description:<input type="text" th:field="*{description}"/>
-    </div>
-    <div>
-        <button type="submit" name="submit" value="value" class="link-button">Submit</button>
-    </div>
-</form>
-</body>
+    <head>
+        <title>Invoice Item Form</title>
+        <link th:href="@{/styles/css/form.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <h2>Invoice Item Form</h2>
+        <div class="container">
+            <form method="POST" th:action="@{/invoiceItem}" th:object="${invoiceItem}">
+
+                <label for="customerId">Customer Id</label>
+                <input type="text" id="customerId" name="customerId" th:field="*{customer}" placeholder="Enter customer id..">
+
+                <label for="amount">Amount</label>
+                <input type="text" id="amount" name="amount" th:field="*{amount}" placeholder="Amount of invoice item..">
+
+                <label for="currency">Currency</label>
+                <input type="text" id="currency" name="currency" th:field="*{currency}" placeholder="Currency..">
+
+                <label for="description">Description</label>
+                <input type="text" id="description" name="description" th:field="*{description}" placeholder="Description..">
+
+                <input type="submit" value="CREATE">
+            </form>
+        </div>
+    </body>
 </html>
