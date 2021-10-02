@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
 <head>
-    <title>Result</title>
+    <title>Customer Form Result</title>
+    <link th:href="@{/styles/css/result.css}" rel="stylesheet"/>
 </head>
     <body>
-    <h3 th:if='${error}' th:text='${error}' style='color: red;'></h3>
-    <div th:unless='${error}'>
-        <h3 style='color: green;'>Customer has been correctly added!</h3>
-        <div>Customer Id: <span th:text='${id}'></span></div>
-        <div>Name: <span th:text='${name}'></span></div>
-        <div>Description.: <span th:text='${description}'></span></div>
-        <div>Email.: <span th:text='${email}'></span></div>
-    </div>
-    <div>
-        <form action="http://localhost:8080/customers">
-            <input type="submit" value="Go to Customer list" />
-        </form>
-    </div>
+        <h2 th:if='${error}' th:text='${error}' style='color: red;'></h2>
+        <div th:unless='${error}'>
+            <h2 style='color: green;'>Customer has been correctly added!</h2>
+            <div class="container">
+                <div>Customer Id: <span th:text='${id}'></span></div>
+                <div>Name: <span th:text='${name}'></span></div>
+                <div>Description.: <span th:text='${description}'></span></div>
+                <div>Email.: <span th:text='${email}'></span></div>
+                <form action="http://localhost:8080/customers">
+                    <input type="submit" value="GO TO CUSTOMER LIST">
+                </form>
+            </div>
+        </div>
     </body>
 </html>

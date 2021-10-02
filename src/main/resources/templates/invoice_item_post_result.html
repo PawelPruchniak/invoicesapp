@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
-<head>
-    <title>Result</title>
-</head>
-<body>
-    <h3 th:if='${error}' th:text='${error}' style='color: red;'></h3>
-    <div th:unless='${error}'>
-        <h3 style='color: green;'>Invoice Item has been correctly added!</h3>
-        <div>InvoiceItem Id: <span th:text='${id}'></span></div>
-        <div>Customer Id: <span th:text='${customer}'></span></div>
-        <div>Amount: <span th:text='${amount}'></span></div>
-        <div>Currency.: <span th:text='${currency}'></span></div>
-        <div>Description.: <span th:text='${description}'></span></div>
-    </div>
-    <div>
-        <form action="http://localhost:8080/invoiceItems">
-            <input type="submit" value="Go to Invoice Item list" />
-        </form>
-    </div>
+    <head>
+        <title>Invoice Item Form Result</title>
+        <link th:href="@{/styles/css/result.css}" rel="stylesheet"/>
+    </head>
+    <body>
+        <h2 th:if='${error}' th:text='${error}' style='color: red;'></h2>
+        <div th:unless='${error}'>
+            <h2 style='color: green;'>Invoice Item has been correctly added!</h2>
+            <div class="container">
+                <div>InvoiceItem Id: <span th:text='${id}'></span></div>
+                <div>Customer Id: <span th:text='${customer}'></span></div>
+                <div>Amount: <span th:text='${amount}'></span></div>
+                <div>Currency.: <span th:text='${currency}'></span></div>
+                <div>Description.: <span th:text='${description}'></span></div>
+                <form action="http://localhost:8080/invoiceItems">
+                    <input type="submit" value="GO TO INVOICE ITEMS LIST" />
+                </form>
+            </div>
+        </div>
     </body>
 </html>
